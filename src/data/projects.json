@@ -1,0 +1,124 @@
+[
+  {
+    "id": "noise-suppression",
+    "title": "Deep Learning Noise Suppression",
+    "category": "Machine Learning / Audio",
+    "description": "Interactive deep learning audio noise suppression application deployed on Hugging Face Spaces with Gradio interface, real-time waveform visualization, and SNR metrics.",
+    "tech": ["Python", "Deep Learning", "Gradio", "Hugging Face", "PyTorch"],
+    "liveUrl": "https://huggingface.co/spaces/aryanthepain/Noise_Suppression_Model",
+    "githubUrl": "https://github.com/aryanthepain/Noise_Suppression_Model",
+    "featured": true,
+    "highlight": "Deployed on Hugging Face Spaces"
+  },
+  {
+    "id": "antigravity-setup",
+    "title": "Antigravity 2026 Control Center",
+    "category": "AI Systems & Agents",
+    "description": "Interactive dashboard for autonomous agent execution contracts, 24 skills matrix, MCP tool ecosystem, and deterministic verification gates.",
+    "tech": ["JavaScript", "Agent Architecture", "MCP Ecosystem", "Web UI"],
+    "liveUrl": "https://aryanthepain.github.io/antigravity_setup/",
+    "githubUrl": "https://github.com/aryanthepain/antigravity_setup",
+    "featured": true,
+    "highlight": "Live on GitHub Pages"
+  },
+  {
+    "id": "camlds-mitre-attack",
+    "title": "CAMLDS MITRE ATT&CK RAG Pipeline",
+    "category": "Cybersecurity & LLMs",
+    "description": "End-to-end RAG pipeline mapping raw Suricata IDS intrusion alerts to MITRE ATT&CK enterprise tactics and techniques using SentenceTransformers and ChromaDB.",
+    "tech": ["Python", "RAG", "SentenceTransformers", "ChromaDB", "Ollama"],
+    "githubUrl": "https://github.com/aryanthepain/camlds-mitre-attack-llm",
+    "featured": true,
+    "highlight": "Security LLM Pipeline"
+  },
+  {
+    "id": "pairs-trading",
+    "title": "Pairs Trading (ARIMA & VECM)",
+    "category": "Quantitative Finance",
+    "description": "Statistical arbitrage framework utilizing Johansen cointegration, Vector Error Correction Models (VECM), and ARIMA residual forecasting for equity pairs.",
+    "tech": ["Python", "Time Series", "Econometrics", "NumPy", "Statsmodels"],
+    "githubUrl": "https://github.com/aryanthepain/Pairs_Trading_ARIMA_VECM",
+    "featured": true,
+    "highlight": "Quantitative Model"
+  },
+  {
+    "id": "radar-btp",
+    "title": "Radar Signal Processing (BTP)",
+    "category": "Signal Processing & ML",
+    "description": "IIT Guwahati B.Tech Project focusing on radar target detection, pulse compression, Doppler filtering, and synthetic aperture radar (SAR) imaging.",
+    "tech": ["Python", "Signal Processing", "NumPy", "SciPy", "Matplotlib"],
+    "githubUrl": "https://github.com/aryanthepain/Radar-BTP",
+    "featured": true,
+    "highlight": "B.Tech Capstone Project"
+  },
+  {
+    "id": "aesth-eval",
+    "title": "AesthEval (Visual Aesthetics Model)",
+    "category": "AI / Product Design",
+    "description": "Computational aesthetics scoring engine analyzing layout balance, color harmony, negative space, and visual hierarchy using neural feature representations.",
+    "tech": ["Python", "Deep Learning", "Product Design", "PyTorch"],
+    "githubUrl": "https://github.com/aryanthepain/AesthEval",
+    "featured": false,
+    "highlight": "Design x ML"
+  },
+  {
+    "id": "traffic-sign-svm",
+    "title": "Traffic Sign Recognition via SVM",
+    "category": "Computer Vision",
+    "description": "Real-time road sign classification using Histogram of Oriented Gradients (HOG) descriptor extraction with multi-class Support Vector Machine optimization.",
+    "tech": ["Python", "OpenCV", "Scikit-Learn", "HOG / SVM"],
+    "githubUrl": "https://github.com/aryanthepain/Traffic_sign_recognition_using_SVM",
+    "featured": false,
+    "highlight": "Computer Vision"
+  },
+  {
+    "id": "ragnarok",
+    "title": "RAGnarok Vector Retrieval",
+    "category": "LLM Infrastructure",
+    "description": "High-throughput Retrieval-Augmented Generation engine featuring recursive document chunking, semantic similarity ranking, and hybrid dense-sparse search.",
+    "tech": ["Python", "Vector DB", "Embeddings", "LLM Orchestration"],
+    "githubUrl": "https://github.com/aryanthepain/RAGnarok",
+    "featured": false,
+    "highlight": "RAG Engine"
+  },
+  {
+    "id": "pulse-tracker",
+    "title": "Pulse Mood & Energy Tracker",
+    "category": "Full-Stack Web",
+    "description": "Interactive web application monitoring personal energy cycles, sleep correlations, and daily cognitive performance trends with intuitive visualizations.",
+    "tech": ["TypeScript", "React", "Vite", "Canvas / Charts"],
+    "githubUrl": "https://github.com/aryanthepain/Pulse-Mood-Energy-Tracker",
+    "featured": false,
+    "highlight": "Web Application"
+  },
+  {
+    "id": "cv-creator",
+    "title": "CV Creator Engine",
+    "category": "Web Tools",
+    "description": "Dynamic resume drafting tool with modular formatting, live typography preview, and automated ATS-friendly export utilities.",
+    "tech": ["JavaScript", "HTML5", "CSS3", "PDF Rendering"],
+    "githubUrl": "https://github.com/aryanthepain/CV_creator",
+    "featured": false,
+    "highlight": "Product Tool"
+  },
+  {
+    "id": "competitive-programming",
+    "title": "Algorithmic Problem Solving",
+    "category": "Algorithms",
+    "description": "Comprehensive library of high-performance C++ solutions covering dynamic programming, segment trees, graph flows, and computational geometry.",
+    "tech": ["C++20", "Algorithms", "Data Structures", "Competitive Programming"],
+    "githubUrl": "https://github.com/aryanthepain/competitive_programming",
+    "featured": false,
+    "highlight": "C++ Library"
+  },
+  {
+    "id": "amex-hack",
+    "title": "AMEX Hackathon Machine Learning",
+    "category": "Machine Learning",
+    "description": "Predictive modeling and credit analytics pipeline built with gradient boosting trees and robust cross-validation for high-cardinality financial data.",
+    "tech": ["Python", "XGBoost", "LightGBM", "Feature Engineering"],
+    "githubUrl": "https://github.com/aryanthepain/AMEX_hack",
+    "featured": false,
+    "highlight": "Competition ML"
+  }
+]
