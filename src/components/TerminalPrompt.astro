@@ -1,0 +1,233 @@
+---
+---
+
+<section id="terminal" class="terminal-section reveal-on-scroll">
+  <div class="site-container">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="terminal-title font-mono">aryan@iitg-box:~ (interactive session)</span>
+      </div>
+
+      <div class="terminal-body font-mono" id="termBody">
+        <div class="term-line output system-msg">
+          Welcome to Aryan Gupta's Interactive CLI v2026.1<br/>
+          Type <span class="term-highlight">help</span> to view available commands, or click any quick command below:
+        </div>
+
+        <div class="quick-commands">
+          <button class="quick-cmd-btn" data-cmd="skills">skills</button>
+          <button class="quick-cmd-btn" data-cmd="projects">projects</button>
+          <button class="quick-cmd-btn" data-cmd="experience">experience</button>
+          <button class="quick-cmd-btn" data-cmd="education">education</button>
+          <button class="quick-cmd-btn" data-cmd="contact">contact</button>
+          <button class="quick-cmd-btn" data-cmd="clear">clear</button>
+        </div>
+
+        <div id="termHistory"></div>
+
+        <form class="term-input-row" id="termForm">
+          <span class="term-prompt">&gt;</span>
+          <input 
+            type="text" 
+            id="termInput" 
+            class="term-input" 
+            placeholder="Type a command (e.g. skills, projects, bio)..." 
+            autocomplete="off" 
+            spellcheck="false"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .terminal-section {
+    padding-block: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .terminal-body {
+    padding: clamp(1rem, 2.5vw, 1.75rem);
+    background: var(--bg-surface);
+    font-size: clamp(0.8125rem, 1.2vw, 0.9375rem);
+    color: var(--text-primary);
+    min-height: 280px;
+    max-height: 460px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .term-line {
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  .term-line.system-msg {
+    color: var(--text-secondary);
+    border-left: 2px solid var(--term-green);
+    padding-left: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .term-highlight {
+    color: var(--term-green);
+    font-weight: 700;
+  }
+
+  .quick-commands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .quick-cmd-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-medium);
+    color: var(--term-cyan);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .quick-cmd-btn:hover {
+    background: rgba(0, 229, 255, 0.1);
+    border-color: var(--term-cyan);
+    transform: translateY(-1px);
+  }
+
+  .term-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border-subtle);
+  }
+
+  .term-prompt {
+    color: var(--term-green);
+    font-weight: 800;
+  }
+
+  .term-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: inherit;
+  }
+
+  .term-input::placeholder {
+    color: var(--text-muted);
+  }
+</style>
+
+<script>
+  const form = document.getElementById('termForm') as HTMLFormElement;
+  const input = document.getElementById('termInput') as HTMLInputElement;
+  const historyContainer = document.getElementById('termHistory') as HTMLDivElement;
+  const termBody = document.getElementById('termBody') as HTMLDivElement;
+  const quickBtns = document.querySelectorAll('.quick-cmd-btn');
+
+  const COMMANDS: Record<string, string> = {
+    help: `Available commands:
+  • <span class="term-highlight">bio</span> / <span class="term-highlight">about</span> : Background and summary
+  • <span class="term-highlight">education</span>    : IIT Guwahati degree & achievements
+  • <span class="term-highlight">experience</span>   : Microsoft internship & roles
+  • <span class="term-highlight">skills</span>       : Languages, ML frameworks, and tools
+  • <span class="term-highlight">projects</span>     : Flagship deployments and models
+  • <span class="term-highlight">resume</span>       : Download links for 3 specialized resumes
+  • <span class="term-highlight">contact</span>      : How to reach Aryan
+  • <span class="term-highlight">clear</span>        : Clear terminal output`,
+
+    bio: `Aryan Gupta — Final Year B.Tech in Data Science & Artificial Intelligence at IIT Guwahati with a minor in Product Design.
+Ranked AIR 1001 in JEE Advanced. Passionate about machine learning pipelines, quantitative trading systems, deep learning for audio signal processing, and intuitive web products.`,
+
+    education: `🎓 IIT Guwahati (2021–2025/2026)
+• Degree: B.Tech in Data Science & Artificial Intelligence
+• Minor: Product Design (Department of Design, IITG)
+• Key Academic Project: BTP in Radar Signal Processing & Detection
+• Competitive Exam: JEE Advanced AIR 1001`,
+
+    experience: `💼 Professional Experience:
+• Microsoft (Hyderabad) — Software Engineering Intern
+  Worked on core systems and enterprise engineering workflows.
+• Campus Leadership:
+  - Xpressions (Dramatics Society, IIT Guwahati)
+  - Consulting and Analytics Club (IIT Guwahati)`,
+
+    skills: `🛠️ Technical Arsenal:
+• Languages: Python, C++20, JavaScript/TypeScript, SQL, HTML5/CSS3
+• ML & AI: PyTorch, TensorFlow, Scikit-Learn, OpenCV, RAG, ChromaDB, Hugging Face
+• Quant & Systems: VECM/ARIMA Time Series, Signal Processing, NumPy, SciPy
+• Web & Design: React, Astro, Vite, Gradio, UI/UX Systems, Figma`,
+
+    projects: `🚀 Flagship Projects:
+1. Deep Learning Noise Suppression (Live Gradio Demo on Hugging Face Spaces)
+2. Antigravity Control Center (Live GitHub Pages Dashboard)
+3. CAMLDS MITRE ATT&CK RAG Security Pipeline (LLM + Vector DB)
+4. Pairs Trading Strategy (Johansen Cointegration & VECM)
+5. Radar Signal Processing BTP (SAR Imaging & Doppler Filters)`,
+
+    resume: `📄 3 Specialized Resumes Available:
+1. HexCode / Systems Developer Resume
+2. Noise Suppression / ML App Developer Resume
+3. Pairs Trading / Quant Implementor Resume
+👉 Scroll down to the Resume section to download any PDF.`,
+
+    contact: `📬 Contact Details:
+• Location: IIT Guwahati, Assam, India
+• GitHub: github.com/aryanthepain
+• LinkedIn: linkedin.com/in/aryanthepain
+• Use the live encrypted contact form below to send an instant message!`
+  };
+
+  function executeCommand(rawCmd: string) {
+    const cmd = rawCmd.trim().toLowerCase();
+    if (!cmd) return;
+
+    if (cmd === 'clear') {
+      historyContainer.innerHTML = '';
+      return;
+    }
+
+    const outputHtml = COMMANDS[cmd] || `command not found: "${rawCmd}". Type <span class="term-highlight">help</span> for a list of valid commands.`;
+
+    const entry = document.createElement('div');
+    entry.className = 'term-entry';
+    entry.innerHTML = `
+      <div class="term-line" style="margin-top: 0.5rem; color: var(--term-green);">
+        <span style="color: var(--term-cyan);">guest@aryan-box</span>:<span>~</span>$ ${rawCmd}
+      </div>
+      <div class="term-line" style="color: var(--text-primary); margin-top: 0.25rem; white-space: pre-wrap;">${outputHtml}</div>
+    `;
+
+    historyContainer.appendChild(entry);
+    termBody.scrollTop = termBody.scrollHeight;
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = input.value;
+    input.value = '';
+    executeCommand(val);
+  });
+
+  quickBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cmd = btn.getAttribute('data-cmd');
+      if (cmd) executeCommand(cmd);
+    });
+  });
+</script>

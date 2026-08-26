@@ -1,0 +1,226 @@
+---
+interface Props {
+  project: {
+    id: string;
+    title: string;
+    category: string;
+    description: string;
+    tech: string[];
+    liveUrl?: string;
+    githubUrl: string;
+    featured: boolean;
+    highlight?: string;
+  };
+}
+
+const { project } = Astro.props;
+---
+
+<article class={`project-card ${project.featured ? 'is-featured' : ''}`}>
+  <div class="card-header">
+    <div class="header-meta">
+      <span class="category-tag font-mono">{project.category}</span>
+      {project.highlight && (
+        <span class="highlight-badge font-mono">
+          {project.liveUrl && <span class="live-dot"></span>}
+          {project.highlight}
+        </span>
+      )}
+    </div>
+
+    <h3 class="project-title font-mono">{project.title}</h3>
+  </div>
+
+  <p class="project-description">
+    {project.description}
+  </p>
+
+  <div class="project-footer">
+    <div class="tech-tags">
+      {project.tech.map((t) => (
+        <span class="tech-tag font-mono">{t}</span>
+      ))}
+    </div>
+
+    <div class="card-links">
+      {project.liveUrl && (
+        <a 
+          href={project.liveUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="link-btn live-link font-mono"
+          aria-label={`Open live demo for ${project.title}`}
+        >
+          <span>Live Demo</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      )}
+
+      <a 
+        href={project.githubUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="link-btn github-link font-mono"
+        aria-label={`View GitHub repository for ${project.title}`}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: clamp(1.25rem, 2vw, 1.65rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-medium);
+    background: var(--bg-card-hover);
+  }
+
+  .project-card.is-featured {
+    border-color: rgba(0, 255, 136, 0.25);
+    background: linear-gradient(180deg, rgba(0, 255, 136, 0.03) 0%, var(--bg-card) 100%);
+  }
+
+  .project-card.is-featured:hover {
+    border-color: var(--term-green);
+    box-shadow: var(--glow-green-sm);
+  }
+
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .category-tag {
+    font-size: 0.75rem;
+    color: var(--term-cyan);
+    letter-spacing: 0.03em;
+  }
+
+  .highlight-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--term-green);
+    background: rgba(0, 255, 136, 0.08);
+    border: 1px solid rgba(0, 255, 136, 0.25);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-full);
+  }
+
+  .live-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    background-color: var(--term-green);
+    border-radius: var(--radius-full);
+  }
+
+  .project-title {
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .project-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .project-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .tech-tag {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 0.2rem 0.45rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .card-links {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+  }
+
+  .live-link {
+    background: var(--term-green);
+    color: #050508;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+  }
+
+  .live-link:hover {
+    background: #1aff96;
+    transform: translateY(-1px);
+  }
+
+  .github-link {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+  }
+
+  .github-link:hover {
+    border-color: var(--term-green);
+    color: var(--term-green);
+    transform: translateY(-1px);
+  }
+</style>

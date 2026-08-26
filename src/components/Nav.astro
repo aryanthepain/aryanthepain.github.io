@@ -1,0 +1,251 @@
+---
+const navItems = [
+  { label: "// about", href: "#about" },
+  { label: "// projects", href: "#projects" },
+  { label: "// resume", href: "#resume" },
+  { label: "// terminal", href: "#terminal" },
+  { label: "// contact", href: "#contact" }
+];
+---
+
+<header class="site-header">
+  <div class="site-container nav-container">
+    <a href="#hero" class="brand-logo" aria-label="Aryan Gupta Home">
+      <span class="prompt-sym">&gt;</span>
+      <span class="brand-text">aryan<span class="accent">.dev</span>()</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="nav-link">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn-primary btn-sm">
+        <span>Hire Me</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul class="mobile-nav-list">
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="mobile-nav-link">
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li class="mobile-cta-item">
+        <a href="#contact" class="btn btn-primary" style="width: 100%;">
+          Hire Me
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8, 8, 12, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-subtle);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .brand-logo {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-primary);
+    transition: transform 0.2s ease;
+  }
+
+  .brand-logo:hover {
+    transform: translateX(2px);
+  }
+
+  .prompt-sym {
+    color: var(--term-green);
+    font-weight: 800;
+  }
+
+  .brand-text .accent {
+    color: var(--term-green);
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-nav {
+      display: block;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    padding: 0.45rem 0.85rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--term-green);
+    background: rgba(0, 255, 136, 0.06);
+  }
+
+  .nav-link.active {
+    color: var(--term-green);
+    background: rgba(0, 255, 136, 0.1);
+    border-bottom: 1.5px solid var(--term-green);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .btn-sm {
+    padding: 0.5rem 0.95rem;
+    font-size: 0.8125rem;
+  }
+
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+    padding: 0.4rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-toggle {
+      display: none;
+    }
+  }
+
+  /* Mobile Drawer */
+  .mobile-drawer {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-medium);
+    padding: 1.5rem clamp(1rem, 4vw, 2.5rem);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .mobile-drawer.is-open {
+    display: block;
+  }
+
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mobile-nav-link {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--text-primary);
+    display: block;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--term-green);
+    background: rgba(0, 255, 136, 0.08);
+  }
+
+  .mobile-cta-item {
+    margin-top: 0.5rem;
+  }
+</style>
+
+<script>
+  const toggleBtn = document.getElementById('mobileMenuToggle');
+  const drawer = document.getElementById('mobileDrawer');
+  const iconOpen = toggleBtn?.querySelector('.icon-open') as HTMLElement;
+  const iconClose = toggleBtn?.querySelector('.icon-close') as HTMLElement;
+
+  toggleBtn?.addEventListener('click', () => {
+    const isOpen = drawer?.classList.toggle('is-open');
+    toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    if (iconOpen && iconClose) {
+      iconOpen.style.display = isOpen ? 'none' : 'block';
+      iconClose.style.display = isOpen ? 'block' : 'none';
+    }
+  });
+
+  // Close drawer on link click
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      drawer?.classList.remove('is-open');
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+      if (iconOpen && iconClose) {
+        iconOpen.style.display = 'block';
+        iconClose.style.display = 'none';
+      }
+    });
+  });
+</script>

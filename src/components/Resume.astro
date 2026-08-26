@@ -1,0 +1,499 @@
+---
+const resumeFiles = [
+  {
+    id: "noise-suppression",
+    title: "ML & Audio DL Engineer Resume",
+    filename: "Aryan_Gupta_IIT_Guwahati_DS_AI_Noise_Supression_App_Developer.pdf",
+    subtitle: "Tailored for Machine Learning, Deep Learning & Audio Processing Roles",
+    size: "194 KB",
+    highlight: "Primary ML Track"
+  },
+  {
+    id: "pairs-trading",
+    title: "Quantitative Systems Implementor Resume",
+    filename: "Aryan_Gupta_IIT_Guwahati_DS_AI_Pairs_Trading_Implementor.pdf",
+    subtitle: "Tailored for Quantitative Finance, Algorithmic Trading & Econometric Modeling",
+    size: "194 KB",
+    highlight: "Quant / Algo Track"
+  },
+  {
+    id: "hexcode-dev",
+    title: "Core Software & Systems Developer Resume",
+    filename: "Aryan_Gupta_IIT_Guwahati_DS_AI_HexCode_developer.pdf",
+    subtitle: "Tailored for Software Engineering, Autonomous Agents & Full-Stack Systems",
+    size: "191 KB",
+    highlight: "Systems Track"
+  }
+];
+
+const education = [
+  {
+    degree: "B.Tech in Data Science & Artificial Intelligence",
+    institution: "Indian Institute of Technology (IIT) Guwahati",
+    duration: "2021 – 2025 / 2026 (Final Year)",
+    details: "Minor in Product Design (Department of Design). Senior Capstone Project in Radar Signal Processing & Detection."
+  }
+];
+
+const experience = [
+  {
+    role: "Software Engineering Intern",
+    company: "Microsoft",
+    location: "Hyderabad, India",
+    duration: "Summer Internship",
+    points: [
+      "Engineered backend services and scalable developer workflows within core cloud infrastructure teams.",
+      "Collaborated with cross-functional distributed teams to optimize internal tooling latency and deterministic test pipelines."
+    ]
+  }
+];
+
+const coursework = [
+  "Deep Learning & Neural Networks",
+  "Pattern Recognition & Machine Learning",
+  "Statistical Inference & Time Series Analysis",
+  "Data Structures & Algorithms (C++)",
+  "Radar Systems & Signal Processing",
+  "Database Management Systems (DBMS)",
+  "Product Design Foundations & Ergonomics",
+  "Artificial Intelligence & Knowledge Systems"
+];
+---
+
+<section id="resume" class="resume-section reveal-on-scroll">
+  <div class="site-container">
+    
+    <div class="section-heading">
+      <span class="section-tag font-mono">// 03. Curriculum Vitae</span>
+      <h2 class="section-title">Resume & Academic Profile</h2>
+      <p class="section-subtitle">
+        Review qualifications on-page or download role-tailored PDF resumes directly.
+      </p>
+    </div>
+
+    <!-- Download Resume Hub -->
+    <div class="resume-downloads-hub">
+      <h3 class="hub-title font-mono">
+        <span class="prompt-sym">&gt;</span> Download Tailored Resume PDFs
+      </h3>
+      <p class="hub-subtitle">
+        Select the resume version tailored to the specific technical role you are hiring for:
+      </p>
+
+      <div class="resume-cards-grid">
+        {resumeFiles.map((item) => (
+          <div class="resume-pdf-card">
+            <div class="pdf-card-badge font-mono">{item.highlight}</div>
+            <h4 class="pdf-card-title font-mono">{item.title}</h4>
+            <p class="pdf-card-sub">{item.subtitle}</p>
+            
+            <div class="pdf-card-footer">
+              <span class="pdf-size font-mono">{item.size} &bull; PDF</span>
+              <a 
+                href={`/resumes/${item.filename}`} 
+                download={item.filename}
+                class="btn btn-primary btn-sm"
+                aria-label={`Download ${item.title}`}
+              >
+                <span>Download PDF</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- On-Page Resume Details -->
+    <div class="resume-content-grid">
+      
+      <!-- Left Column: Education & Experience -->
+      <div class="resume-column">
+        
+        <!-- Experience Block -->
+        <div class="resume-block">
+          <h3 class="block-title font-mono">
+            <span class="block-icon">💼</span> Professional Experience
+          </h3>
+          <div class="timeline-tree">
+            {experience.map((exp) => (
+              <div class="tree-item">
+                <div class="tree-line"></div>
+                <div class="tree-dot"></div>
+                <div class="tree-content">
+                  <div class="item-header">
+                    <h4 class="item-role font-mono">{exp.role}</h4>
+                    <span class="item-duration font-mono">{exp.duration}</span>
+                  </div>
+                  <div class="item-company font-mono">
+                    {exp.company} &bull; <span class="loc">{exp.location}</span>
+                  </div>
+                  <ul class="item-points">
+                    {exp.points.map((pt) => (
+                      <li>{pt}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Education Block -->
+        <div class="resume-block">
+          <h3 class="block-title font-mono">
+            <span class="block-icon">🎓</span> Academic Education
+          </h3>
+          <div class="timeline-tree">
+            {education.map((edu) => (
+              <div class="tree-item">
+                <div class="tree-line"></div>
+                <div class="tree-dot"></div>
+                <div class="tree-content">
+                  <div class="item-header">
+                    <h4 class="item-role font-mono">{edu.degree}</h4>
+                    <span class="item-duration font-mono">{edu.duration}</span>
+                  </div>
+                  <div class="item-company font-mono">{edu.institution}</div>
+                  <p class="edu-details">{edu.details}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Coursework & Honors -->
+      <div class="resume-column">
+        
+        <!-- Honors & Key Ranks -->
+        <div class="resume-block">
+          <h3 class="block-title font-mono">
+            <span class="block-icon">🏆</span> Honors & Competitive Ranks
+          </h3>
+          <div class="honors-cards">
+            <div class="honor-card">
+              <div class="honor-badge font-mono">AIR 1001</div>
+              <div class="honor-info">
+                <h4 class="honor-title font-mono">JEE Advanced</h4>
+                <p class="honor-desc">National top percentile ranking among 160,000+ candidates for IIT admission.</p>
+              </div>
+            </div>
+
+            <div class="honor-card">
+              <div class="honor-badge font-mono">IITG</div>
+              <div class="honor-info">
+                <h4 class="honor-title font-mono">Data Science & AI Batch</h4>
+                <p class="honor-desc">Enrolled in the flagship DSAI undergraduate cohort at IIT Guwahati with Design Minor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coursework -->
+        <div class="resume-block">
+          <h3 class="block-title font-mono">
+            <span class="block-icon">📚</span> Relevant Coursework
+          </h3>
+          <div class="coursework-grid">
+            {coursework.map((course) => (
+              <div class="course-chip font-mono">
+                <span class="check-mark">✓</span>
+                <span>{course}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .resume-section {
+    padding-block: clamp(3rem, 6vw, 6rem);
+  }
+
+  /* Downloads Hub */
+  .resume-downloads-hub {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: 3.5rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .hub-title {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .hub-title .prompt-sym {
+    color: var(--term-green);
+  }
+
+  .hub-subtitle {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .resume-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .resume-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .resume-pdf-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .resume-pdf-card:hover {
+    border-color: var(--term-green);
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+  }
+
+  .pdf-card-badge {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--term-green);
+    background: rgba(0, 255, 136, 0.08);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    align-self: flex-start;
+  }
+
+  .pdf-card-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .pdf-card-sub {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .pdf-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .pdf-size {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* Content Grid */
+  .resume-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 992px) {
+    .resume-content-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+
+  .resume-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .block-title {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  /* Timeline Tree */
+  .timeline-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .tree-item {
+    position: relative;
+    padding-left: 1.75rem;
+  }
+
+  .tree-dot {
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: var(--radius-full);
+    background: var(--term-green);
+    box-shadow: var(--glow-green-sm);
+  }
+
+  .tree-line {
+    position: absolute;
+    left: 0.28rem;
+    top: 1rem;
+    bottom: -1.5rem;
+    width: 1px;
+    background: var(--border-medium);
+  }
+
+  .tree-item:last-child .tree-line {
+    display: none;
+  }
+
+  .item-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .item-role {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  .item-duration {
+    font-size: 0.75rem;
+    color: var(--term-cyan);
+    background: rgba(0, 229, 255, 0.08);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .item-company {
+    font-size: 0.875rem;
+    color: var(--term-green);
+    margin-block: 0.2rem 0.5rem;
+  }
+
+  .item-company .loc {
+    color: var(--text-muted);
+  }
+
+  .item-points {
+    list-style: disc;
+    padding-left: 1.2rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .item-points li {
+    margin-bottom: 0.35rem;
+  }
+
+  .edu-details {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Honors */
+  .honors-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .honor-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .honor-badge {
+    font-size: 0.8125rem;
+    font-weight: 800;
+    color: #050508;
+    background: var(--term-green);
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+  }
+
+  .honor-title {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .honor-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Coursework */
+  .coursework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .course-chip {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .course-chip .check-mark {
+    color: var(--term-green);
+    font-weight: bold;
+  }
+</style>

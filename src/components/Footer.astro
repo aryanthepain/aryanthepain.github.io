@@ -1,0 +1,128 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-container footer-container">
+    
+    <div class="footer-top">
+      <div class="footer-brand font-mono">
+        <span class="prompt-sym">&gt;</span> aryan.status <span class="accent">= "Ready to ship"</span>
+      </div>
+
+      <a href="#hero" class="back-to-top font-mono" aria-label="Back to top of page">
+        <span>Back to Top</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="19" x2="12" y2="5"></line>
+          <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright font-mono">
+        &copy; {currentYear} Aryan Sandeep Gupta &bull; IIT Guwahati.
+      </p>
+
+      <div class="footer-links font-mono">
+        <a href="https://github.com/aryanthepain" target="_blank" rel="noopener noreferrer" class="footer-link">
+          GitHub
+        </a>
+        <span class="dot-sep">&bull;</span>
+        <a href="https://www.linkedin.com/in/aryanthepain/" target="_blank" rel="noopener noreferrer" class="footer-link">
+          LinkedIn
+        </a>
+        <span class="dot-sep">&bull;</span>
+        <a href="https://huggingface.co/spaces/aryanthepain/Noise_Suppression_Model" target="_blank" rel="noopener noreferrer" class="footer-link">
+          Hugging Face
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-base);
+    border-top: 1px solid var(--border-subtle);
+    padding-block: 2.5rem 3rem;
+    margin-top: 4rem;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border-subtle);
+  }
+
+  .footer-brand {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+  }
+
+  .footer-brand .prompt-sym {
+    color: var(--term-green);
+  }
+
+  .footer-brand .accent {
+    color: var(--term-green);
+  }
+
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+  }
+
+  .back-to-top:hover {
+    color: var(--term-green);
+    border-color: var(--term-green);
+    transform: translateY(-2px);
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-link {
+    color: var(--text-secondary);
+    transition: color 0.15s ease;
+  }
+
+  .footer-link:hover {
+    color: var(--term-green);
+  }
+
+  .dot-sep {
+    color: var(--border-medium);
+  }
+</style>

@@ -1,0 +1,282 @@
+---
+const skillCategories = [
+  {
+    category: "Languages & Core",
+    icon: "01",
+    skills: ["Python", "C++20", "TypeScript", "JavaScript (ESNext)", "SQL", "HTML5 / Modern CSS", "PHP"]
+  },
+  {
+    category: "Machine Learning & AI",
+    icon: "02",
+    skills: ["PyTorch", "TensorFlow", "Scikit-Learn", "OpenCV", "RAG Pipelines", "SentenceTransformers", "ChromaDB", "Ollama", "Hugging Face Spaces"]
+  },
+  {
+    category: "Quantitative & Audio Systems",
+    icon: "03",
+    skills: ["VECM & Cointegration", "ARIMA Time Series", "Radar Signal Processing", "Audio Noise Suppression", "NumPy", "SciPy", "Statsmodels"]
+  },
+  {
+    category: "Web & Autonomous Engineering",
+    icon: "04",
+    skills: ["React", "Astro", "Vite", "Gradio", "MCP Protocols", "Antigravity Agent SDK", "Git / GitHub Pages", "REST APIs"]
+  },
+  {
+    category: "Product & Interface Design",
+    icon: "05",
+    skills: ["Product Design (IITG Minor)", "Design Systems", "UI/UX Architecture", "Figma", "Design Heuristics", "Aesthetic Evaluation"]
+  }
+];
+---
+
+<section id="about" class="about-section reveal-on-scroll">
+  <div class="site-container">
+    
+    <div class="section-heading">
+      <span class="section-tag font-mono">// 01. Background & Expertise</span>
+      <h2 class="section-title">About & Technical Arsenal</h2>
+      <p class="section-subtitle">
+        Bridging mathematical modeling, machine intelligence, and high-craft software engineering.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      
+      <!-- Bio Terminal Card -->
+      <div class="terminal-window bio-card">
+        <div class="terminal-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="terminal-title font-mono">about_aryan.md</span>
+        </div>
+
+        <div class="bio-body">
+          <p class="bio-paragraph">
+            I am a <strong class="highlight">Final Year B.Tech student in Data Science and Artificial Intelligence</strong> at the 
+            <strong class="highlight">Indian Institute of Technology (IIT) Guwahati</strong> with an academic minor in 
+            <strong class="highlight">Product Design</strong>.
+          </p>
+
+          <p class="bio-paragraph">
+            My technical focus spans the entire machine learning lifecycle: from deriving statistical formulations 
+            (such as vector error correction models for quantitative trading) and deep neural architectures for audio noise suppression, 
+            to architecting low-latency retrieval pipelines and interactive interfaces.
+          </p>
+
+          <div class="timeline-highlights">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4 class="timeline-title font-mono">Microsoft (Hyderabad)</h4>
+                <p class="timeline-desc">Software Engineering Intern &bull; Core engineering & enterprise workflows.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4 class="timeline-title font-mono">IIT Guwahati (JEE Advanced AIR 1001)</h4>
+                <p class="timeline-desc">B.Tech in Data Science & AI &bull; Minor in Product Design &bull; Final Year Capstone in Radar Signal Processing.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h4 class="timeline-title font-mono">Campus Leadership & Culture</h4>
+                <p class="timeline-desc">Active contributor in <strong>Xpressions</strong> (Dramatics Society) and the <strong>Consulting & Analytics Club</strong>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Matrix -->
+      <div class="skills-wrapper">
+        <h3 class="skills-main-title font-mono">
+          <span class="prompt-sym">&gt;</span> Technical Competencies
+        </h3>
+
+        <div class="skills-categories-grid">
+          {skillCategories.map((group) => (
+            <div class="skill-category-card">
+              <div class="skill-cat-header font-mono">
+                <span class="skill-cat-idx">{group.icon}</span>
+                <h4 class="skill-cat-name">{group.category}</h4>
+              </div>
+              <div class="skill-pills">
+                {group.skills.map((skill) => (
+                  <span class="skill-pill font-mono">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding-block: clamp(3rem, 6vw, 6rem);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 992px) {
+    .about-grid {
+      grid-template-columns: 1fr 1.1fr;
+      align-items: start;
+    }
+  }
+
+  .bio-body {
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .bio-paragraph {
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-size: clamp(0.9375rem, 1.2vw, 1.05rem);
+  }
+
+  .bio-paragraph .highlight {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* Timeline Highlights */
+  .timeline-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .timeline-marker {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: var(--radius-full);
+    background-color: var(--term-green);
+    margin-top: 0.4rem;
+    flex-shrink: 0;
+    box-shadow: var(--glow-green-sm);
+  }
+
+  .timeline-title {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .timeline-desc strong {
+    color: var(--text-secondary);
+  }
+
+  /* Skills Matrix */
+  .skills-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skills-main-title {
+    font-size: 1.125rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .skills-main-title .prompt-sym {
+    color: var(--term-green);
+  }
+
+  .skills-categories-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .skill-category-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    transition: all 0.2s ease;
+  }
+
+  .skill-category-card:hover {
+    border-color: var(--border-medium);
+    background: var(--bg-card-hover);
+  }
+
+  .skill-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .skill-cat-idx {
+    font-size: 0.75rem;
+    color: var(--term-green);
+    background: rgba(0, 255, 136, 0.08);
+    padding: 0.15rem 0.4rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .skill-cat-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-pill {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+  }
+
+  .skill-pill:hover {
+    color: var(--term-green);
+    border-color: rgba(0, 255, 136, 0.35);
+    background: rgba(0, 255, 136, 0.05);
+  }
+</style>

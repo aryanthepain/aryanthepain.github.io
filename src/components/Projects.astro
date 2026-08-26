@@ -1,0 +1,160 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import projectsData from '../data/projects.json';
+
+const filterCategories = [
+  { label: "All Projects", filter: "all", count: projectsData.length },
+  { label: "Featured & Live", filter: "featured", count: projectsData.filter(p => p.featured).length },
+  { label: "Machine Learning & AI", filter: "ml", count: projectsData.filter(p => p.category.includes("Machine") || p.category.includes("Deep") || p.category.includes("Vision") || p.category.includes("LLM")).length },
+  { label: "Quant & Systems", filter: "systems", count: projectsData.filter(p => p.category.includes("Quant") || p.category.includes("Signal") || p.category.includes("Algorithms")).length },
+  { label: "Web Applications", filter: "web", count: projectsData.filter(p => p.category.includes("Web") || p.category.includes("Full-Stack")).length }
+];
+---
+
+<section id="projects" class="projects-section reveal-on-scroll">
+  <div class="site-container">
+    
+    <div class="section-heading">
+      <span class="section-tag font-mono">// 02. Engineering & Research</span>
+      <h2 class="section-title">Featured Projects & Systems</h2>
+      <p class="section-subtitle">
+        Curated portfolio of deployed AI applications, quantitative models, and open-source infrastructure.
+      </p>
+    </div>
+
+    <!-- Filter Buttons Bar -->
+    <div class="filter-bar font-mono" role="tablist" aria-label="Project filter categories">
+      {filterCategories.map((cat, idx) => (
+        <button 
+          class={`filter-btn ${idx === 0 ? 'is-active' : ''}`}
+          data-filter={cat.filter}
+          role="tab"
+          aria-selected={idx === 0 ? 'true' : 'false'}
+        >
+          <span>{cat.label}</span>
+          <span class="filter-count">({cat.count})</span>
+        </button>
+      ))}
+    </div>
+
+    <!-- Project Cards Grid -->
+    <div class="projects-grid" id="projectsGrid">
+      {projectsData.map((project) => {
+        let tagGroup = "other";
+        if (project.featured) tagGroup += " featured";
+        if (project.category.includes("Machine") || project.category.includes("Deep") || project.category.includes("Vision") || project.category.includes("LLM") || project.category.includes("AI")) tagGroup += " ml";
+        if (project.category.includes("Quant") || project.category.includes("Signal") || project.category.includes("Algorithms") || project.category.includes("Cybersecurity")) tagGroup += " systems";
+        if (project.category.includes("Web") || project.category.includes("Full-Stack") || project.category.includes("Product")) tagGroup += " web";
+
+        return (
+          <div class="project-grid-item" data-tags={tagGroup}>
+            <ProjectCard project={project} />
+          </div>
+        );
+      })}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding-block: clamp(3rem, 6vw, 6rem);
+  }
+
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--border-medium);
+    color: var(--text-primary);
+  }
+
+  .filter-btn.is-active {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: var(--term-green);
+    color: var(--term-green);
+    box-shadow: var(--glow-green-sm);
+  }
+
+  .filter-count {
+    font-size: 0.75rem;
+    opacity: 0.75;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .project-grid-item {
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .project-grid-item.is-hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectItems = document.querySelectorAll('.project-grid-item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const filter = btn.getAttribute('data-filter') || 'all';
+
+      projectItems.forEach((item) => {
+        const tags = item.getAttribute('data-tags') || '';
+        if (filter === 'all' || tags.includes(filter)) {
+          item.classList.remove('is-hidden');
+        } else {
+          item.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+</script>
